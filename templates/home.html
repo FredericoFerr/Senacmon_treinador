@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Início - Senacmon{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+
+    {% if user.is_authenticated %}
+        <h1>Bem-vindo, {{ user.username }}! </h1>
+        <p>Seu mundo Senacmon espera por você!</p>
+
+        <img src="{% static 'images/senacmon_logo.png' %}" alt="Logo Senacmon" width="250" class="my-4">
+
+        <div>
+            <a href="{% url 'start' %}" class="btn btn-success btn-lg">
+                🎮 Iniciar Partida
+            </a>
+        </div>
+
+    {% else %}
+        <h1>Bem-vindo ao Mundo Senacmon!</h1>
+        <p>Faça login para começar sua jornada!</p>
+
+        <img src="{% static 'images/senacmon_logo.png' %}" alt="Logo Senacmon" width="250" class="my-4">
+
+        <div>
+            <a href="{% url 'login' %}" class="btn btn-primary btn-lg">
+                Entrar
+            </a>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}

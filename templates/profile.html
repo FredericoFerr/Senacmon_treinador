@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Perfil do Treinador{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center mt-5">
+    <div class="card shadow-lg" style="width: 22rem;">
+        <img src="{% static 'images/avatar.png' %}" class="card-img-top" alt="Avatar do Treinador">
+        <div class="card-body text-center">
+            <h4 class="card-title">{{ user.username }}</h4>
+            <p class="card-text">E-mail: {{ user.email|default:"Não informado" }}</p>
+            <p class="card-text"> Berries: <strong>150</strong></p>
+            <p class="card-text text-muted">Treinador dedicado a capturar e treinar Senacmons poderosos!</p>
+            <a href="#" class="btn btn-warning">Editar Perfil</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
