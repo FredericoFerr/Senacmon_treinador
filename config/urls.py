@@ -3,7 +3,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-
-    # Todas as rotas do app "game"
     path("", include("game.urls")),
 ]
