@@ -4,17 +4,11 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# ---------------------------
-# Configurações básicas
-# ---------------------------
 SECRET_KEY = "django-insecure-troque-esta-chave-em-producao"
 DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# ---------------------------
-# Aplicações instaladas
-# ---------------------------
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -22,15 +16,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
-    # Apps do projeto
     "game",
 ]
 
 
-# ---------------------------
-# Middlewares
-# ---------------------------
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -42,20 +31,12 @@ MIDDLEWARE = [
 ]
 
 
-# ---------------------------
-# URLs principais
-# ---------------------------
 ROOT_URLCONF = "config.urls"
 
-
-# ---------------------------
-# Templates
-# ---------------------------
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            BASE_DIR / "templates"
+        "DIRS": [BASE_DIR / "templates"
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -70,15 +51,9 @@ TEMPLATES = [
 ]
 
 
-# ---------------------------
-# WSGI
-# ---------------------------
 WSGI_APPLICATION = "config.wsgi.application"
 
 
-# ---------------------------
-# Banco de dados
-# ---------------------------
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -86,10 +61,6 @@ DATABASES = {
     }
 }
 
-
-# ---------------------------
-# Validações de senha
-# ---------------------------
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
@@ -98,9 +69,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# ---------------------------
-# Idioma e fuso horário
-# ---------------------------
 LANGUAGE_CODE = "pt-br"
 TIME_ZONE = "America/Sao_Paulo"
 
@@ -108,9 +76,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-# ---------------------------
-# Arquivos estáticos
-# ---------------------------
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static"
@@ -119,14 +84,8 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 
-# ---------------------------
-# Arquivos de mídia (opcional)
-# ---------------------------
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 
-# ---------------------------
-# Configuração final
-# ---------------------------
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

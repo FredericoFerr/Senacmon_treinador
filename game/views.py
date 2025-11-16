@@ -2,17 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-
-# ---------------------------
-# Página inicial
-# ---------------------------
 def home_view(request):
     return render(request, "home.html")
 
-
-# ---------------------------
-# Página de login
-# ---------------------------
 def login_view(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -30,38 +22,22 @@ def login_view(request):
 
     return render(request, "login.html")
 
-
-# ---------------------------
-# Logout
-# ---------------------------
 def logout_view(request):
     logout(request)
     return redirect("home")
 
-
-# ---------------------------
-# Página de perfil
-# ---------------------------
 @login_required
 def profile_view(request):
     return render(request, "profile.html")
 
-
-# ---------------------------
-# Página "Sobre"
-# ---------------------------
 def about_view(request):
     return render(request, "about.html")
 
-
-# ---------------------------
-# Iniciar partida
-# ---------------------------
 @login_required
 def start_view(request):
     return render(request, "start.html")
 
-from django.contrib.auth.models import User
+
 
 def register_view(request):
     if request.method == "POST":
@@ -70,7 +46,6 @@ def register_view(request):
         password = request.POST.get("password")
         confirm = request.POST.get("confirm")
 
-        # Verificações básicas
         if password != confirm:
             return render(request, "register.html", {
                 "error": "As senhas não coincidem."
@@ -81,14 +56,12 @@ def register_view(request):
                 "error": "Este nome de usuário já está em uso."
             })
 
-        # Criar usuário
         user = User.objects.create_user(
             username=username,
             email=email,
             password=password
         )
 
-        # Loga automaticamente após cadastro
         login(request, user)
         return redirect("home")
 
